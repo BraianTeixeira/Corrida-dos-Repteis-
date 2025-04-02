@@ -23,15 +23,15 @@ function draw() {
 
 function Verificador(){
 if(Jacaré > 350){
-  text("Jacaré Venceu!", 70, 200);
+  text("Jacaré Venceu!", 90, 200);
   noLoop();
 }
 if(Cobra > 350){
-  text("Cobra Venceu!", 70, 200);
+  text("Cobra Venceu!", 90, 200);
   noLoop();
 }
 if(Tiranossauro > 350){
-  text("Tiranossauro Venceu!", 70, 200);
+  text("Tiranossauro Venceu!", 40, 200);
   noLoop();
 }
 if(Tartaruga > 350){
