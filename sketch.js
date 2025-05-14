@@ -2,75 +2,61 @@ function setup() {
   createCanvas(400, 400);
 }
 
-let Jacaré = 0;
-let Cobra = 0;
-let Tiranossauro = 0;
-let Tartaruga = 0;
+let xJogador = [0, 0, 0, 0, 0];
+let yJogador = [50, 130, 210, 290, 370];
+let Jogador = ["🐊", "🐍", "🦖", "🐢", "🦎"];
+let Teclas = ["a", "s", "j", "k", "l"];
+let Quantidade = Jogador.length;
 
 function draw() {
   ativaJogo();
   desenhaJogadores();
   Verificador();
   desenhaLinhadeChegada();
-
-
-
-
-
-
-
 }
 
-function Verificador(){
-if(Jacaré > 350){
-  text("Jacaré Venceu!", 90, 200);
-  noLoop();
-}
-if(Cobra > 350){
-  text("Cobra Venceu!", 90, 200);
-  noLoop();
-}
-if(Tiranossauro > 350){
-  text("Tiranossauro Venceu!", 40, 200);
-  noLoop();
-}
-if(Tartaruga > 350){
-  text("Tartaruga Venceu!", 70, 200);
-  noLoop();
-}
+function Verificador() {
+  textSize(50);
+  for (let i = 0; i < Quantidade; i++) {
+    if (xJogador[i] > 350) {
+      text(Jogador[i] + " Venceu!", 60, 200);
+      noLoop();
+    }
+  }
 }
 
-function desenhaLinhadeChegada(){
- rect(350, 0, 10, 400);
+function desenhaLinhadeChegada() {
+  fill("white");
+  rect(350, 0, 15, 400);
+  fill("black");
+  for (let YAtual = 0; YAtual < 400; YAtual += 20) {
+    rect(350, YAtual, 15, 10);
+  }
 }
 
-function desenhaJogadores(){
- textSize(30);
- text('🐊', Jacaré , 50);
- text('🐍', Cobra, 150);
- text('🦖', Tiranossauro , 250);
- text('🐢', Tartaruga, 350);
+function desenhaJogadores() {
+  textSize(40);
+  text("🌵", 150, 330);
+  textSize(35);
+  for (let i = 0; i < Quantidade; i++) {
+    text(Jogador[i], xJogador[i], yJogador[i]);
+  }
+  textSize(55);
+  text("🌵", 250, 100);
 }
 
-function ativaJogo(){
-    if (focused == true){
-  background('rgb(255,246,108)');
-} else {
-  background ('rgb(238,229,229)');
-}
+function ativaJogo() {
+  if (focused == true) {
+    background("rgb(255,246,108)");
+  } else {
+    background("rgb(238,229,229)");
+  }
 }
 
 function keyReleased() {
-    if (key === 'a') {
-        Jacaré += random(10);
+  for (let i = 0; i < Quantidade; i++) {
+    if (key == Teclas[i]) {
+      xJogador[i] += random(10);
     }
-    if(key == 's'){
-        Cobra += random(10);
-    }
-    if(key == 'j'){
-        Tiranossauro += random(10);
-    }
-    if(key == 'k'){
-        Tartaruga += random(10);
-    }
+  }
 }
